@@ -24,11 +24,11 @@ function App() {
     try {
       if (editId) {
         // MODE EDIT: Kirim data lewat Axios (PUT) ke Back-end
-        await axios.put(`http://localhost:5000/api/barang/${editId}`, formData);
+        await axios.put(`https://aplikasi-inventaris.onrender.com/api/barang/${editId}`, formData);
         setEditId(null); // Kembalikan ke mode tambah setelah selesai
       } else {
         // MODE TAMBAH BARU: Kirim data lewat Axios (POST) ke Back-end
-        await axios.post('http://localhost:5000/api/barang', formData);
+        await axios.post('https://aplikasi-inventaris.onrender.com/api/barang', formData);
       }
       
       ambilDataBarang(); 
@@ -60,7 +60,7 @@ function App() {
     
     if (konfirmasi) {
       try {
-        await axios.delete(`http://localhost:5000/api/barang/${id}`);
+        await axios.delete(`https://aplikasi-inventaris.onrender.com/api/barang/${id}`);
         ambilDataBarang(); // Memanggil ulang data agar barang yang dihapus hilang dari layar
       } catch (error) {
         console.error("Gagal menghapus barang:", error);
@@ -72,7 +72,7 @@ function App() {
   // Fungsi Axios untuk mengambil data dari Back-end
   const ambilDataBarang = async () => {
     try {
-      const respons = await axios.get('http://localhost:5000/api/barang');
+      const respons = await axios.get('https://aplikasi-inventaris.onrender.com/api/barang');
       setBarang(respons.data); // Menyimpan data yang didapat ke dalam state 'barang'
     } catch (error) {
       console.error("Gagal mengambil data:", error);
