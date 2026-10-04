@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // 3. Konfigurasi Jembatan ke Database PostgreSQL
+/*
 const pool = new Pool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -17,6 +18,17 @@ const pool = new Pool({
     port: process.env.DB_PORT,
     database: process.env.DB_NAME
 });
+*/
+
+// 3.1 Konfigurasi Jembatan ke Database PostgreSQL di SUPA BASE
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+
 
 // 4. Mengetes Koneksi ke Database
 pool.connect((err) => {
